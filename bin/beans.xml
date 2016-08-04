@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+		  "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans default-init-method="myInit" default-destroy-method="myCleanUp">
+	<bean id="triangle" class="com.rahul.learningspring.Triangle"
+		init-method="myInit" destroy-method="myCleanUp">
+		<property name="pointa" ref="pointa" />
+		<property name="pointb" ref="pointb" />
+		<property name="pointc" ref="pointc">
+		</property>
+	</bean>
+
+	<!-- <property name="type" value="Equilateral"/> -->
+	<!-- <constructor-arg value="Isoscles"/> <constructor-arg value="20"/> -->
+
+	<!-- <constructor-arg type="int" value="20"/> -->
+	<!-- <constructor-arg index="0" value="20"/> <constructor-arg index="1" 
+		value="100"/> -->
+
+	<bean id="pointa" class="com.rahul.learningspring.Point">
+		<property name="x" value="${pointa.x}" />
+		<property name="y" value="${pointa.y}" />
+	</bean>
+	<bean id="pointb" class="com.rahul.learningspring.Point">
+		<property name="x" value="-20" />
+		<property name="y" value="0" />
+	</bean>
+	<bean id="pointc" class="com.rahul.learningspring.Point">
+		<property name="x" value="0" />
+		<property name="y" value="20" />
+	</bean>
+
+	<!-- <bean class="com.rahul.learningspring.DisplayNameBeanPostProcessor"/> -->
+	<bean class="com.rahul.learningspring.DisplayNameBeanFactoryPostProcessor" />
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations" value="points.properties" />
+	</bean>
+<!-- 	<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor" /> -->
+
+
+
+	<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor" />
+
+	<bean id="center" class="com.rahul.learningspring.Point">
+		<property name="x" value="0" />
+		<property name="y" value="0" />
+	</bean>
+	<bean id="circle" class="com.rahul.learningspring.Circle">
+	</bean>
+
+</beans>

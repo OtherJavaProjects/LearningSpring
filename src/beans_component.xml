@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+	
+	<context:annotation-config />
+	<context:component-scan base-package="com.rahul.learningspring"/>
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>messages</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- <bean class="com.rahul.learningspring.DisplayNameBeanPostProcessor"/> -->
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations" value="points.properties" />
+	</bean>
+
+	<bean id="pointa" class="com.rahul.learningspring.Point">
+		<property name="x" value="${pointa.x}" />
+		<property name="y" value="${pointa.y}" />
+	</bean>
+	<bean id="pointb" class="com.rahul.learningspring.Point">
+		<property name="x" value="-20" />
+		<property name="y" value="0" />
+	</bean>
+	<bean id="pointc" class="com.rahul.learningspring.Point">
+		<property name="x" value="0" />
+		<property name="y" value="20" />
+	</bean>
+	<bean id="center" class="com.rahul.learningspring.Point">
+		<qualifier value="CircleRelated" />
+		<property name="x" value="0" />
+		<property name="y" value="-200" />
+	</bean>
+
+</beans>
